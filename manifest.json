@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "snow_script",
+  "version": "1.0.0",
+  "description": "",
+  "content_scripts": [
+    {
+      "matches": ["https://aagprod.service-now.com/now/nav/ui/classic/params/target/incident.do"],
+      "js": ["index.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "private": true
+}
