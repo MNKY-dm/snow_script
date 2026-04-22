@@ -5,7 +5,7 @@
   "description": "",
   "content_scripts": [
     {
-      "matches": ["https://www.eventtia.com/*"],
+      "matches": ["https://www.eventtia.com/*", "https://aagprod.service-now.com/*"],
       "js": ["/index.js"],
       "run_at": "document_idle"
     }
