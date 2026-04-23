@@ -1,13 +1,16 @@
 {
   "manifest_version": 3,
   "name": "snow_script",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Mettre les Catégories, Sous-catégories, Items et CIs automatiquement dans la brève description d'un ticket SNow. By Dylan MOULIN.",
   "content_scripts": [
     {
       "matches": ["https://aagprod.service-now.com/*"],
       "js": ["/index.js"],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_orgin_as_fallback": true,
+      "match_about_blank": true
     }
   ]
 }
