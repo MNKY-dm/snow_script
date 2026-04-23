@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
   "name": "snow_script",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Petit script qui permet de mettre les Catégories, Sous-catégories, Items et CIs automatiquement dans la brève description d'un ticket Service Now. By Dylan MOULIN.",
   "content_scripts": [
     {
-      "matches": ["https://www.eventtia.com/*", "https://aagprod.service-now.com/*"],
+      "matches": ["https://aagprod.service-now.com/*"],
       "js": ["/index.js"],
       "run_at": "document_idle"
     }
