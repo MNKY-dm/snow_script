@@ -3,7 +3,6 @@ console.log("Extension [snow_script] chargée : OK");
 let selectCategory = document.getElementById('incident.category');
 let selectSubCategory = document.getElementById('incident.subcategory');
 let selectItem = document.getElementById('incident.u_item');
-let inputCI = document.querySelector('#sys_display\\.incident\\.cmdb_ci');
 
 let inputShortDescription = document.getElementById('incident.short_description');
 
@@ -11,9 +10,8 @@ function setShortDescription() {
     // console.log("setShortDescription en cours");
     let tab = inputShortDescription.value.split('- ');
     let shortDescription = tab[tab.length - 1];
-    let finalShortDescription = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
+    inputShortDescription.value = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
     // console.log("finalshortdescription : " + finalShortDescription);
-    inputShortDescription.value = finalShortDescription;
 }
 
 let shortDescription = ''
@@ -52,16 +50,25 @@ selectItem.addEventListener('change', () => {
 // console.log("getItem OK");
 
 let CI = ''
-inputCI.addEventListener('input', () => {
-    setTimeout(() => {
-        CI = inputCI.value;
-        CI = CI.toUpperCase();
-        setShortDescription()
-        console.log("CI : " + CI)
-    }, 1000)
-    // setShortDescription()
+
+const inputCIDisplay = document.getElementById('sys_display.incident.cmdb_ci');
+
+function updateCIWhenReady() {
+    const display = inputCIDisplay?.value?.trim() || '';
+
+    if (!display) return
+
+    CI = display.toUpperCase()
+    console.log("CI : " + CI)
+    console.log('sys_id = ' + display)
+    setShortDescription()
+}
+
+inputCIDisplay.addEventListener('input', () => {
+    setTimeout(()=>{
+        updateCIWhenReady();
+    }, 2500)
 })
-// console.log("getCI OK");
 
 
 
