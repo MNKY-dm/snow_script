@@ -45,7 +45,7 @@ function init() {
 
         let category = '';
         selectCategory.addEventListener('change', () => {
-            category = selectCategory.value;
+            category = clearValue(selectCategory.value);
             category = category.toUpperCase();
             // console.log("category : " + category)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
@@ -54,7 +54,7 @@ function init() {
 
         let subCategory = ''
         selectSubCategory.addEventListener('change', () => {
-            subCategory = selectSubCategory.value;
+            subCategory = clearValue(selectSubCategory.value);
             subCategory = subCategory.toUpperCase();
             // console.log("subcategory : " + subCategory)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
@@ -63,7 +63,7 @@ function init() {
 
         let item = '';
         selectItem.addEventListener('change', () => {
-            item = selectItem.value;
+            item = clearValue(selectItem.value);
             item = item.toUpperCase();
             // console.log("item : " + item)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
@@ -75,7 +75,7 @@ function init() {
         
         inputCIDisplay.addEventListener('input', () => {
             setTimeout(()=>{
-                const display = inputCIDisplay?.value?.trim() || '';
+                const display = clearValue(inputCIDisplay?.value) || '';
 
 
                 CI = display.toUpperCase()
@@ -107,6 +107,11 @@ function setShortDescription(inputShortDescription, category, subCategory, item,
     let shortDescription = tab[tab.length - 1];
     inputShortDescription.value = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
     // console.log("finalshortdescription : " + finalShortDescription);
+}
+
+function clearValue(value) {
+    if (value.includes('_')) value = value.replace('_', ' / ')
+    return value
 }
 
 start()
