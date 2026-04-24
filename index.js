@@ -85,6 +85,17 @@ function init() {
             }, 2500)
         })
 
+        inputCIDisplay.addEventListener('click', () => {
+            setTimeout(()=>{
+                const display = inputCIDisplay?.value?.trim() || '';
+
+                CI = display.toUpperCase()
+                console.log("CI : " + CI)
+                console.log('sys_id = ' + display)
+                setShortDescription(inputShortDescription, category, subCategory, item, CI)
+            }, 2500)
+        })
+
     }
 
     return true
