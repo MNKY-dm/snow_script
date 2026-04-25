@@ -45,8 +45,8 @@ function init() {
 
         let category = '';
         selectCategory.addEventListener('change', () => {
-            category = clearValue(selectCategory.value);
-            category = category.toUpperCase();
+            category = selectCategory.value;
+            category = clearValue(category.toUpperCase());
             // console.log("category : " + category)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
@@ -54,8 +54,8 @@ function init() {
 
         let subCategory = ''
         selectSubCategory.addEventListener('change', () => {
-            subCategory = clearValue(selectSubCategory.value);
-            subCategory = subCategory.toUpperCase();
+            subCategory = selectSubCategory.value;
+            subCategory = clearValue(subCategory.toUpperCase());
             // console.log("subcategory : " + subCategory)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
@@ -63,8 +63,8 @@ function init() {
 
         let item = '';
         selectItem.addEventListener('change', () => {
-            item = clearValue(selectItem.value);
-            item = item.toUpperCase();
+            item = selectItem.value;
+            item = clearValue(item.toUpperCase());
             // console.log("item : " + item)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
@@ -75,10 +75,10 @@ function init() {
         
         inputCIDisplay.addEventListener('input', () => {
             setTimeout(()=>{
-                const display = clearValue(inputCIDisplay?.value) || '';
+                const display = inputCIDisplay?.value || '';
 
 
-                CI = display.toUpperCase()
+                CI = clearValue(display.toUpperCase())
                 console.log("CI : " + CI)
                 console.log('sys_id = ' + display)
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
@@ -109,9 +109,40 @@ function setShortDescription(inputShortDescription, category, subCategory, item,
     // console.log("finalshortdescription : " + finalShortDescription);
 }
 
+// Fonction qui 'nettoie' les valeurs individuellement en fonction des cas et ressort la valeur telle qu'attendue par la hiérarchie
 function clearValue(value) {
-    if (value.includes('_')) value = value.replace('_', ' / ')
+    switch (value) {
+        case 'HARDWARE_FR':  value = 'HARDWARE'
+            break
+        case 'WINDOWS_ACTIVE_DIRECTORY':  value = 'WINDOWS / ACTIVE DIRECTORY'
+            break
+        case 'CYBER':  value = 'CYBERSECURITY'
+            break
+        case 'INSTALL_CONFIGURATION':  value = 'INSTALL & CONFIGURATION'
+            break
+        case 'PICKING_DEVICE_PDA':  value = 'PICKING DEVICE (PDA)'
+            break
+        case 'PARTAGE_D_CRAN':  value = "PARTAGE D'ECRAN"
+            break
+        case 'OFFICE_EXCEL_WORD_POWERPOINT_ETC':  value = "OFFICE (EXCEL, WORD, POWERPOINT, ETC.)"
+            break
+        case 'MANHATTAN_MASC':  value = "MANHATTAN - MASC"
+            break
+        default:
+            if (slash(value)) value = slash(value)
+            else if (value.includes('_')) value = value.replace('_', ' ')
+            break
+    }
     return value
+}
+
+// Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
+function slash(value) {
+    const slashList = ['INTRANET_OTHER_SOFT', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
+    slashList.forEach(slash => {
+        if (slash === value) return value.replace('_', ' / ')
+    })
+    return null
 }
 
 start()
