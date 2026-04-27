@@ -12,5 +12,11 @@
       "match_orgin_as_fallback": true,
       "match_about_blank": true
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "images/*.png" ],
+      "matches": [ "https://aagprod.service-now.com/*" ]
+    }
   ]
 }

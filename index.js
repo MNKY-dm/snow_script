@@ -9,11 +9,17 @@ console.log('incident.short_description + ', document.getElementById('incident.s
 let isInitialized = false
 let retryId = null
 
+let retryCount = 0;
+const MAX_RETRIES = 15;
+
 function start() {
-    if(location.protocol === 'about:') return
-    if (isInitialized) return
-    if (init()) return
-    retryId = setTimeout(start, 1000)
+    if (location.protocol === 'about:') return;
+    if (isInitialized) return;
+    if (init()) return;
+    if (retryCount >= MAX_RETRIES) return; // abandon après 15s
+    retryCount++;
+    console.log('starting n°', retryCount);
+    retryId = setTimeout(start, 1000);
 }
 
 function init() {
@@ -30,6 +36,8 @@ function init() {
 
     else {
         isInitialized = true;
+        document.body.dataset.snowScriptInit = 'true';
+        console.log('initialized in init : ok')
         if (retryId) clearTimeout(retryId);
         console.log("Extension [snow_script] chargée : OK pour " + location.href);
 
@@ -79,8 +87,6 @@ function init() {
 
 
                 CI = clearValue(display.toUpperCase())
-                console.log("CI : " + CI)
-                console.log('sys_id = ' + display)
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
         })
@@ -90,8 +96,6 @@ function init() {
                 const display = inputCIDisplay?.value?.trim() || '';
 
                 CI = display.toUpperCase()
-                console.log("CI : " + CI)
-                console.log('sys_id = ' + display)
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
         })
