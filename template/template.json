@@ -1,0 +1,86 @@
+[
+  {
+    "label": "Compte AD bloqué",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "system",
+      "u_item": "windows_active_directory",
+      "CI": "Active Directory",
+      "short_description": "Compte bloqué"
+    }
+  },
+  {
+    "label": "Mot de passe AD expiré",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "system",
+      "u_item": "windows_active_directory",
+      "CI": "Active Directory",
+      "short_description": "Mot de passe expiré"
+    }
+  },
+  {
+    "label": "Connexion AD KO",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "system",
+      "u_item": "windows_active_directory",
+      "CI": "Active Directory",
+      "short_description": "Connexion NOK"
+    }
+  },
+  {
+    "label": "Compte Sineres bloqué",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "erp",
+      "u_item": "sineres",
+      "CI": "SINERES",
+      "short_description": "Compte bloqué"
+    }
+  },
+  {
+    "label": "Mot de passe Sineres expiré",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "erp",
+      "u_item": "sineres",
+      "CI": "SINERES",
+      "short_description": "Mot de passe expiré"
+    }
+  },
+  {
+    "label": "Connexion compte Sineres KO",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "erp",
+      "u_item": "sineres",
+      "CI": "SINERES",
+      "short_description": "Connexion NOK"
+    }
+  },
+  {
+    "label": "Connexion SSO OneGPC NOK",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "system",
+      "u_item": "ping_id_sso",
+      "CI": "Ping ID",
+      "short_description": "Connexion NOK"
+    }
+  }
+]
