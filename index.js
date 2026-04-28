@@ -134,19 +134,23 @@ function clearValue(value) {
             break
         default:
             if (slash(value)) value = slash(value)
-            else if (value.includes('_')) value = value.replace('_', ' ')
+            value = value.replace('_', ' ')
             break
     }
     return value
 }
 
-// Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
+// Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
 function slash(value) {
+    console.log("slash pour : ", value)
     const slashList = ['INTRANET_OTHER_SOFT', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
     slashList.forEach(slash => {
-        if (slash === value) return value.replace('_', ' / ')
+        if (slash === value) {
+            value = value.replace('_', ' / ')
+            console.log('Valeur slashée : ' + value)
+        }
     })
-    return null
+    return value
 }
 
 start()
