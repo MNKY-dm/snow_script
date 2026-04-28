@@ -12,17 +12,18 @@ let retryId = null
 let retryCount = 0;
 const MAX_RETRIES = 15;
 
-function start() {
+async function start() {
     if (location.protocol === 'about:') return;
+    isInitialized = await init();
     if (isInitialized) return;
-    if (init()) return;
     if (retryCount >= MAX_RETRIES) return; // abandon après 15s
     retryCount++;
     console.log('starting n°', retryCount);
     retryId = setTimeout(start, 1000);
+    await loadOverlay();
 }
 
-function init() {
+async function init() {
     let selectCategory = document.getElementById('incident.category');
     let selectSubCategory = document.getElementById('incident.subcategory');
     let selectItem = document.getElementById('incident.u_item');
@@ -149,5 +150,14 @@ function slash(value) {
     return null
 }
 
-start()
 
+async function loadOverlay() {
+    const url = chrome.runtime.getURL('overlay/overlay.html')
+    const html = await fetch(url).then(response => response.text())
+
+    const urgency = document.getElementById('urgency')
+    console.log(urgency)
+    urgency.insertAdjacentHTML('afterend', html)
+}
+
+start()
