@@ -118,8 +118,6 @@ function clearValue(value) {
     switch (value) {
         case 'HARDWARE_FR':  value = 'HARDWARE'
             break
-        case 'WINDOWS_ACTIVE_DIRECTORY':  value = 'WINDOWS / ACTIVE DIRECTORY'
-            break
         case 'CYBER':  value = 'CYBERSECURITY'
             break
         case 'INSTALL_CONFIGURATION':  value = 'INSTALL & CONFIGURATION'
@@ -143,7 +141,7 @@ function clearValue(value) {
 // Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
 function slash(value) {
     console.log("slash pour : ", value)
-    const slashList = ['INTRANET_OTHER_SOFT', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
+    const slashList = ['WINDOWS_ACTIVE_DIRECTORY', 'INTRANET_OTHER_SOFT', 'PINGID_SSO', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
     slashList.forEach(slash => {
         if (slash === value) {
             value = value.replace('_', ' / ')
