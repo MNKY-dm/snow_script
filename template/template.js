@@ -15,8 +15,9 @@ window.addEventListener('message', (event) => {
     g_form.setValue('assignment_group', option.fields.group)
     g_form.setValue('urgency', option.fields.urgency)
     g_form.setValue('contact_type', option.fields.contact_type)
+
+    setTimeout(() => {
+        g_form.setValue('short_description', option.fields.short_description)
+    }, 1000)
+    g_form.setValue('description', option.fields.description)
 });
-
-
-// async function applyTemplate(option) {
-// }

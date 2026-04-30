@@ -29,10 +29,11 @@ async function start() {
 }
 
 async function init() {
-    let selectCategory = document.getElementById('incident.category');
-    let selectSubCategory = document.getElementById('incident.subcategory');
-    let selectItem = document.getElementById('incident.u_item');
-    let inputShortDescription = document.getElementById('incident.short_description');
+    const selectCategory = document.getElementById('incident.category');
+    const selectSubCategory = document.getElementById('incident.subcategory');
+    const selectItem = document.getElementById('incident.u_item');
+    const inputShortDescription = document.getElementById('incident.short_description');
+    const inputCIDisplay = document.getElementById('sys_display.incident.cmdb_ci');
 
 
     if (!selectCategory) return false;
@@ -47,51 +48,54 @@ async function init() {
         if (retryId) clearTimeout(retryId);
         console.log("Extension [snow_script] chargée : OK pour " + location.href);
 
-        // console.log('inputShortDescritption : ' + inputShortDescription);
-
+        let category = clearValue(selectCategory.value.toUpperCase());
+        let subCategory = clearValue(selectSubCategory.value.toUpperCase());
+        let item = clearValue(selectItem.value.toUpperCase());
+        let CI = clearValue(inputCIDisplay.value.toUpperCase());
         let shortDescription = clearValue(inputShortDescription.value.toUpperCase());
+
         inputShortDescription.addEventListener('input', () => {
             shortDescription = inputShortDescription.value;
-            // console.log("shortdescription : " + shortDescription)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
-// console.log("getShortDescription OK");
 
-        let category = clearValue(selectCategory.value.toUpperCase());
+        const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                shortDescription = inputShortDescription.value;
+                setShortDescription(inputShortDescription, category, subCategory, item, CI)
+            })
+        })
+
+        observer.observe(inputShortDescription, { attributes: true, childList: true, subtree: true, characterData: true });
+
+        // inputShortDescription.addEventListener('change', () => {
+        //     shortDescription = inputShortDescription.value;
+        //     // console.log("shortdescription : " + shortDescription)
+        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        // })
+
         selectCategory.addEventListener('change', () => {
             category = selectCategory.value;
             category = clearValue(category.toUpperCase());
             // console.log("category : " + category)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
-// console.log("getCategory OK");
 
-        let subCategory = clearValue(selectSubCategory.value.toUpperCase());
         selectSubCategory.addEventListener('change', () => {
             subCategory = selectSubCategory.value;
             subCategory = clearValue(subCategory.toUpperCase());
-            // console.log("subcategory : " + subCategory)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
-// console.log("getSubCategory OK");
 
-        let item = clearValue(selectItem.value.toUpperCase());
         selectItem.addEventListener('change', () => {
             item = selectItem.value;
             item = clearValue(item.toUpperCase());
-            // console.log("item : " + item)
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
-// console.log("getItem OK");
 
-        const inputCIDisplay = document.getElementById('sys_display.incident.cmdb_ci');
-        let CI = clearValue(inputCIDisplay.value.toUpperCase());
-        
         inputCIDisplay.addEventListener('input', () => {
             setTimeout(()=>{
                 const display = inputCIDisplay?.value || '';
-
-
                 CI = clearValue(display.toUpperCase())
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
@@ -105,9 +109,7 @@ async function init() {
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
         })
-
     }
-
     return true
 }
 
@@ -181,8 +183,6 @@ async function loadOverlay() {
         const option = new Option(item["label"], item["label"]);
         console.log('option ajoutée :', option)
         templateDropdown.add(option)
-
-
     })
     templateDropdown.addEventListener('change', () => {
         let option
@@ -198,8 +198,6 @@ async function loadOverlay() {
             console.error("Erreur au lancement de applyTemplate() : ", e)
         }
     })
-
-
     return true
 }
 

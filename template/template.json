@@ -27,7 +27,7 @@
       "service": "All",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
-      "short_description": "Mot de passe ex,piré",
+      "short_description": "Mot de passe expiré",
       "description": "Téléphone :           \nMot de passe expiré"
     }
   },
@@ -75,7 +75,7 @@
       "service": "0e7a06157f10310016181ccebefa91ce",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
-      "short_description": "Mot de passe ex,piré",
+      "short_description": "Mot de passe expiré",
       "description": "Téléphone :           \nMot de passe expiré"
     }
   },
