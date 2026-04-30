@@ -208,13 +208,12 @@ async function loadOverlay() {
 
     console.log('json :', json)
 
-    const placement = document.getElementById('incident.urgency')
+    const placement = document.getElementById('incident.urgency').closest('.form-group');
     // console.log("placement : ", placement)
     if (!placement) return false
     console.log("placement OK")
     placement.insertAdjacentHTML('afterend', html)
 
-    const overlay = document.getElementById('overlay')
     const templateDropdown = document.getElementById('template_dropdown')
 
     json.forEach((item) => {
