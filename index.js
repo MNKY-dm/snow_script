@@ -59,14 +59,14 @@ async function init() {
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
 
-        const observer = new MutationObserver(function (mutations) {
+        const observerShortDescription = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                shortDescription = inputShortDescription.value;
+                shortDescription = clearValue(inputShortDescription.value.toUpperCase());
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             })
         })
 
-        observer.observe(inputShortDescription, { attributes: true, childList: true, subtree: true, characterData: true });
+        observerShortDescription.observe(inputShortDescription, { attributes: true, childList: true, subtree: true, characterData: true });
 
         // inputShortDescription.addEventListener('change', () => {
         //     shortDescription = inputShortDescription.value;
@@ -81,11 +81,39 @@ async function init() {
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
 
+        const observerCategory = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                category = clearValue(selectCategory.value.toUpperCase());
+                setShortDescription(inputShortDescription, category, subCategory, item, CI)
+            })
+        })
+
+        observerCategory.observe(selectCategory, { attributes: true, childList: true, subtree: true, characterData: true });
+
+        const observerSubCategory = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                subCategory = clearValue(selectSubCategory.value.toUpperCase());
+                setShortDescription(inputShortDescription, category, subCategory, item, CI)
+            })
+        })
+
+
+        observerSubCategory.observe(selectSubCategory, { attributes: true, childList: true, subtree: true, characterData: true });
+
         selectSubCategory.addEventListener('change', () => {
             subCategory = selectSubCategory.value;
             subCategory = clearValue(subCategory.toUpperCase());
             setShortDescription(inputShortDescription, category, subCategory, item, CI)
         })
+
+        const observerItem = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                item = clearValue(selectItem.value.toUpperCase());
+                setShortDescription(inputShortDescription, category, subCategory, item, CI)
+            })
+        })
+
+        observerItem.observe(selectItem, { attributes: true, childList: true, subtree: true, characterData: true });
 
         selectItem.addEventListener('change', () => {
             item = selectItem.value;
@@ -109,16 +137,26 @@ async function init() {
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
         })
+
+        const observerCI = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                CI = clearValue(inputCIDisplay.value.toUpperCase());
+                setShortDescription(inputShortDescription, category, subCategory, item, CI)
+            })
+        })
+
+        observerCI.observe(inputCIDisplay, { attributes: true, childList: true, subtree: true, characterData: true });
     }
     return true
 }
 
 function setShortDescription(inputShortDescription, category, subCategory, item, CI) {
+    setTimeout(() => {
+        let tab = inputShortDescription.value.split('- ');
 
-    let tab = inputShortDescription.value.split('- ');
-
-    let shortDescription = tab[tab.length - 1];
-    inputShortDescription.value = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
+        let shortDescription = tab[tab.length - 1];
+        inputShortDescription.value = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
+    }, 400)
 
 }
 

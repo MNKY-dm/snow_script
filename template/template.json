@@ -11,6 +11,7 @@
       "service": "All",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Compte débloqué",
       "short_description": "Compte bloqué",
       "description": "Téléphone :           \nCompte bloqué"
     }
@@ -27,6 +28,7 @@
       "service": "All",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Mot de passe réinitialisé",
       "short_description": "Mot de passe expiré",
       "description": "Téléphone :           \nMot de passe expiré"
     }
@@ -43,6 +45,7 @@
       "service": "All",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Mot de passe réinitialisé --> OK",
       "short_description": "Connexion NOK",
       "description": "Téléphone :           \nConnexion NOK"
     }
@@ -59,6 +62,7 @@
       "service": "0e7a06157f10310016181ccebefa91ce",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Compte débloqué",
       "short_description": "Compte bloqué",
       "description": "Téléphone :           \nCompte bloqué"
     }
@@ -75,6 +79,7 @@
       "service": "0e7a06157f10310016181ccebefa91ce",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Mot de passe réinitialisé",
       "short_description": "Mot de passe expiré",
       "description": "Téléphone :           \nMot de passe expiré"
     }
@@ -91,6 +96,7 @@
       "service": "0e7a06157f10310016181ccebefa91ce",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Mot de passe réinitialisé --> OK",
       "short_description": "Connexion NOK",
       "description": "Téléphone :           \nConnexion NOK"
     }
@@ -107,6 +113,7 @@
       "service": "All",
       "group": "ALL_L1_SDK",
       "close_code": "Solved (Permanently)",
+      "close_notes": "Mot de passe réinitialisé",
       "short_description": "Connexion NOK",
       "description": "Téléphone :           \nConnexion NOK"
     }
