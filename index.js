@@ -49,7 +49,7 @@ async function init() {
 
         // console.log('inputShortDescritption : ' + inputShortDescription);
 
-        let shortDescription = ''
+        let shortDescription = clearValue(inputShortDescription.value.toUpperCase());
         inputShortDescription.addEventListener('input', () => {
             shortDescription = inputShortDescription.value;
             // console.log("shortdescription : " + shortDescription)
@@ -57,7 +57,7 @@ async function init() {
         })
 // console.log("getShortDescription OK");
 
-        let category = '';
+        let category = clearValue(selectCategory.value.toUpperCase());
         selectCategory.addEventListener('change', () => {
             category = selectCategory.value;
             category = clearValue(category.toUpperCase());
@@ -66,7 +66,7 @@ async function init() {
         })
 // console.log("getCategory OK");
 
-        let subCategory = ''
+        let subCategory = clearValue(selectSubCategory.value.toUpperCase());
         selectSubCategory.addEventListener('change', () => {
             subCategory = selectSubCategory.value;
             subCategory = clearValue(subCategory.toUpperCase());
@@ -75,7 +75,7 @@ async function init() {
         })
 // console.log("getSubCategory OK");
 
-        let item = '';
+        let item = clearValue(selectItem.value.toUpperCase());
         selectItem.addEventListener('change', () => {
             item = selectItem.value;
             item = clearValue(item.toUpperCase());
@@ -85,7 +85,7 @@ async function init() {
 // console.log("getItem OK");
 
         const inputCIDisplay = document.getElementById('sys_display.incident.cmdb_ci');
-        let CI = ''
+        let CI = clearValue(inputCIDisplay.value.toUpperCase());
         
         inputCIDisplay.addEventListener('input', () => {
             setTimeout(()=>{
@@ -101,7 +101,7 @@ async function init() {
             setTimeout(()=>{
                 const display = inputCIDisplay?.value?.trim() || '';
 
-                CI = display.toUpperCase()
+                CI = clearValue(display.toUpperCase())
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
         })
@@ -112,19 +112,18 @@ async function init() {
 }
 
 function setShortDescription(inputShortDescription, category, subCategory, item, CI) {
-    // console.log("setShortDescription en cours");
+
     let tab = inputShortDescription.value.split('- ');
+
     let shortDescription = tab[tab.length - 1];
     inputShortDescription.value = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
-    // console.log("finalshortdescription : " + finalShortDescription);
+
 }
 
 // Fonction qui 'nettoie' les valeurs individuellement en fonction des cas et ressort la valeur telle qu'attendue par la hiérarchie
 function clearValue(value) {
     switch (value) {
         case 'HARDWARE_FR':  value = 'HARDWARE'
-            break
-        case 'WINDOWS_ACTIVE_DIRECTORY':  value = 'WINDOWS / ACTIVE DIRECTORY'
             break
         case 'CYBER':  value = 'CYBERSECURITY'
             break
@@ -140,19 +139,23 @@ function clearValue(value) {
             break
         default:
             if (slash(value)) value = slash(value)
-            else if (value.includes('_')) value = value.replace('_', ' ')
+            value = value.replace('_', ' ')
             break
     }
     return value
 }
 
-// Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
+// Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
 function slash(value) {
-    const slashList = ['INTRANET_OTHER_SOFT', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
+    console.log("slash pour : ", value)
+    const slashList = ['WINDOWS_ACTIVE_DIRECTORY', 'INTRANET_OTHER_SOFT', 'PINGID_SSO', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
     slashList.forEach(slash => {
-        if (slash === value) return value.replace('_', ' / ')
+        if (slash === value) {
+            value = value.replace('_', ' / ')
+            console.log('Valeur slashée : ' + value)
+        }
     })
-    return null
+    return value
 }
 
 
