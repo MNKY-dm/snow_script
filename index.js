@@ -43,7 +43,7 @@ function init() {
 
         // console.log('inputShortDescritption : ' + inputShortDescription);
 
-        let shortDescription = ''
+        let shortDescription = clearValue(inputShortDescription.value.toUpperCase());
         inputShortDescription.addEventListener('input', () => {
             shortDescription = inputShortDescription.value;
             // console.log("shortdescription : " + shortDescription)
@@ -51,7 +51,7 @@ function init() {
         })
 // console.log("getShortDescription OK");
 
-        let category = '';
+        let category = clearValue(selectCategory.value.toUpperCase());
         selectCategory.addEventListener('change', () => {
             category = selectCategory.value;
             category = clearValue(category.toUpperCase());
@@ -60,7 +60,7 @@ function init() {
         })
 // console.log("getCategory OK");
 
-        let subCategory = ''
+        let subCategory = clearValue(selectSubCategory.value.toUpperCase());
         selectSubCategory.addEventListener('change', () => {
             subCategory = selectSubCategory.value;
             subCategory = clearValue(subCategory.toUpperCase());
@@ -69,7 +69,7 @@ function init() {
         })
 // console.log("getSubCategory OK");
 
-        let item = '';
+        let item = clearValue(selectItem.value.toUpperCase());
         selectItem.addEventListener('change', () => {
             item = selectItem.value;
             item = clearValue(item.toUpperCase());
@@ -79,7 +79,7 @@ function init() {
 // console.log("getItem OK");
 
         const inputCIDisplay = document.getElementById('sys_display.incident.cmdb_ci');
-        let CI = ''
+        let CI = clearValue(inputCIDisplay.value.toUpperCase());
         
         inputCIDisplay.addEventListener('input', () => {
             setTimeout(()=>{
@@ -95,7 +95,7 @@ function init() {
             setTimeout(()=>{
                 const display = inputCIDisplay?.value?.trim() || '';
 
-                CI = display.toUpperCase()
+                CI = clearValue(display.toUpperCase())
                 setShortDescription(inputShortDescription, category, subCategory, item, CI)
             }, 2500)
         })
@@ -106,11 +106,12 @@ function init() {
 }
 
 function setShortDescription(inputShortDescription, category, subCategory, item, CI) {
-    // console.log("setShortDescription en cours");
+
     let tab = inputShortDescription.value.split('- ');
+
     let shortDescription = tab[tab.length - 1];
     inputShortDescription.value = category + ' - ' + subCategory + ' - ' + item + ' - ' + CI + ' - ' + shortDescription;
-    // console.log("finalshortdescription : " + finalShortDescription);
+
 }
 
 // Fonction qui 'nettoie' les valeurs individuellement en fonction des cas et ressort la valeur telle qu'attendue par la hiérarchie
