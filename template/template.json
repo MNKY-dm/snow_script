@@ -8,7 +8,11 @@
       "subcategory": "system",
       "u_item": "windows_active_directory",
       "CI": "Active Directory",
-      "short_description": "Compte bloqué"
+      "service": "All",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Compte bloqué",
+      "description": "Téléphone :           \nCompte bloqué"
     }
   },
   {
@@ -20,7 +24,11 @@
       "subcategory": "system",
       "u_item": "windows_active_directory",
       "CI": "Active Directory",
-      "short_description": "Mot de passe expiré"
+      "service": "All",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Mot de passe ex,piré",
+      "description": "Téléphone :           \nMot de passe expiré"
     }
   },
   {
@@ -32,7 +40,11 @@
       "subcategory": "system",
       "u_item": "windows_active_directory",
       "CI": "Active Directory",
-      "short_description": "Connexion NOK"
+      "service": "All",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Connexion NOK",
+      "description": "Téléphone :           \nConnexion NOK"
     }
   },
   {
@@ -44,7 +56,11 @@
       "subcategory": "erp",
       "u_item": "sineres",
       "CI": "SINERES",
-      "short_description": "Compte bloqué"
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Compte bloqué",
+      "description": "Téléphone :           \nCompte bloqué"
     }
   },
   {
@@ -56,7 +72,11 @@
       "subcategory": "erp",
       "u_item": "sineres",
       "CI": "SINERES",
-      "short_description": "Mot de passe expiré"
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Mot de passe ex,piré",
+      "description": "Téléphone :           \nMot de passe expiré"
     }
   },
   {
@@ -68,7 +88,11 @@
       "subcategory": "erp",
       "u_item": "sineres",
       "CI": "SINERES",
-      "short_description": "Connexion NOK"
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Connexion NOK",
+      "description": "Téléphone :           \nConnexion NOK"
     }
   },
   {
@@ -78,9 +102,13 @@
       "contact_type": "phone",
       "category": "infrastructure",
       "subcategory": "system",
-      "u_item": "ping_id_sso",
+      "u_item": "pingid_sso",
       "CI": "Ping ID",
-      "short_description": "Connexion NOK"
+      "service": "All",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "short_description": "Connexion NOK",
+      "description": "Téléphone :           \nConnexion NOK"
     }
   }
 ]

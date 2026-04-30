@@ -1,5 +1,6 @@
-console.log('snow_script on ', location.href, 'readyState=', document.readyState)
+console.log('snow_script on : ', location.href, ' ; readyState=', document.readyState)
 
+console.log('incident.urgency + ', document.getElementById('incident.urgency'))
 console.log('incident.category + ', document.getElementById('incident.category'))
 console.log('incident.subcategory + ', document.getElementById('incident.subcategory'))
 console.log('incident.u_item + ', document.getElementById('incident.u_item'))
@@ -13,14 +14,18 @@ let retryCount = 0;
 const MAX_RETRIES = 15;
 
 async function start() {
-    if (location.protocol === 'about:') return;
-    isInitialized = await init();
-    if (isInitialized) return;
+    if (location.href === 'about:srcdoc' || location.href === 'about:blank' && (!location.href.includes('incident.do') || !location.href.includes('incident_list.do'))) return;
     if (retryCount >= MAX_RETRIES) return; // abandon après 15s
+    isInitialized = await init();
+    if (isInitialized) {
+        await loadOverlay();
+        return;
+    }
+    else {
+        retryId = setTimeout(start, 1000);
+    }
     retryCount++;
     console.log('starting n°', retryCount);
-    retryId = setTimeout(start, 1000);
-    await loadOverlay();
 }
 
 async function init() {
@@ -155,9 +160,44 @@ async function loadOverlay() {
     const url = chrome.runtime.getURL('overlay/overlay.html')
     const html = await fetch(url).then(response => response.text())
 
-    const urgency = document.getElementById('urgency')
-    console.log(urgency)
-    urgency.insertAdjacentHTML('afterend', html)
+    const url2 = chrome.runtime.getURL('template/template.json')
+    const json = await fetch(url2).then(response => response.json())
+
+    console.log('json :', json)
+
+    const placement = document.getElementById('incident.urgency')
+    // console.log("placement : ", placement)
+    if (!placement) return false
+    console.log("placement OK")
+    placement.insertAdjacentHTML('afterend', html)
+
+    const overlay = document.getElementById('overlay')
+    const templateDropdown = document.getElementById('template_dropdown')
+
+    json.forEach((item) => {
+        const option = new Option(item["label"], item["label"]);
+        console.log('option ajoutée :', option)
+        templateDropdown.add(option)
+
+
+    })
+    templateDropdown.addEventListener('change', () => {
+        let option
+        json.forEach((item) => {
+            if (item["label"] === templateDropdown.value) {
+                option = item
+            }
+        })
+        try {
+            window.postMessage({ type: 'APPLY_TEMPLATE', data: option }, '*');
+            // applyTemplate(option)
+        } catch (e) {
+            console.error("Erreur au lancement de applyTemplate() : ", e)
+        }
+    })
+
+
+    return true
 }
 
 start()
