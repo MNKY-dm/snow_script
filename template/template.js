@@ -41,7 +41,10 @@ window.addEventListener('message', (event) => {
     g_form.setValue('subcategory', option.fields.subcategory)
     g_form.setValue('u_item', option.fields.u_item)
     g_form.setValue('cmdb_ci', option.fields.CI)
-    g_form.setValue('business_service', option.fields.service)
+
+    setTimeout(() => {
+        g_form.setValue('business_service', option.fields.service)
+    }, 1000) // timeout nécessaire ici car le service est supprimé s'il est entré trop rapidement
     g_form.setValue('assignment_group', option.fields.group)
     g_form.setValue('urgency', option.fields.urgency)
     g_form.setValue('contact_type', option.fields.contact_type)
@@ -51,3 +54,5 @@ window.addEventListener('message', (event) => {
     g_form.setValue('close_code', option.fields.close_code)
     g_form.setValue('close_notes', option.fields.close_notes)
 });
+
+// VPN, PING ID, IMPRIMANTES SINERES & WINDOWS, LICENCES OFFICE, CODE PIN BITLOCKER,
