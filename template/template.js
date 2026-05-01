@@ -1,6 +1,36 @@
 window.addEventListener('message', (event) => {
-    if (event.data?.type !== 'APPLY_TEMPLATE') return;
     if (typeof g_form === 'undefined') return;
+    if (event.data?.type === 'RESET_TEMPLATE') {
+        const mandatoryFields = ['caller_id', 'location', 'category', 'subcategory', 'u_item', 'cmdb_ci',
+            'contact_type', 'urgency'];
+
+        mandatoryFields.forEach(f => g_form.setMandatory(f, false));
+        setTimeout(() => {
+
+            console.log("Reset template en cours...");
+            document.getElementById('template_dropdown').value = ''
+            g_form.clearValue('category');
+            // g_form.clearValue('subcategory')
+            // g_form.clearValue('u_item')
+            g_form.clearValue('cmdb_ci')
+            g_form.clearValue('business_service')
+            g_form.clearValue('assignment_group')
+            g_form.clearValue('urgency')
+            g_form.clearValue('contact_type')
+
+            g_form.clearValue('short_description')
+            g_form.clearValue('description')
+            g_form.clearValue('close_code')
+            g_form.clearValue('close_notes')
+
+            setTimeout(() => {
+                mandatoryFields.forEach(f => g_form.setMandatory(f, true));
+            }, 500);
+        }, 500)
+
+        return;
+    }
+    else if (event.data?.type !== 'APPLY_TEMPLATE') return;
 
     const option = event.data.data;
     console.log("applying template...");

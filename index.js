@@ -198,6 +198,10 @@ function slash(value) {
     return value
 }
 
+function resetTemplate() {
+    window.postMessage({ type: 'RESET_TEMPLATE' }, '*');
+}
+
 
 async function loadOverlay() {
     const url = chrome.runtime.getURL('overlay/overlay.html')
@@ -230,11 +234,17 @@ async function loadOverlay() {
         })
         try {
             window.postMessage({ type: 'APPLY_TEMPLATE', data: option }, '*');
-            // applyTemplate(option)
         } catch (e) {
             console.error("Erreur au lancement de applyTemplate() : ", e)
         }
     })
+
+    const resetButton = document.getElementById('reset_template')
+
+    resetButton.addEventListener('click', (e) => {
+        resetTemplate()
+    })
+
     return true
 }
 
