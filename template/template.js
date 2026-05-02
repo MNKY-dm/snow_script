@@ -9,14 +9,15 @@ window.addEventListener('message', (event) => {
 
             console.log("Reset template en cours...");
             document.getElementById('template_dropdown').value = ''
+            const mirror = document.querySelector('.select-mirror');
+            if (mirror) {
+                mirror.innerHTML = `<span style="color: rgb(0, 5, 14);padding-left: 3px;">-- Aucune --</span>`;
+                mirror.classList.remove('scrolling');
+            }
+
             g_form.clearValue('category');
-            // g_form.clearValue('subcategory')
-            // g_form.clearValue('u_item')
             g_form.clearValue('cmdb_ci')
             g_form.clearValue('business_service')
-            g_form.clearValue('assignment_group')
-            g_form.clearValue('urgency')
-            g_form.clearValue('contact_type')
 
             g_form.clearValue('short_description')
             g_form.clearValue('description')

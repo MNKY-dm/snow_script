@@ -187,12 +187,12 @@ function clearValue(value) {
 
 // Fonction qui permet de remplacer les '_' par des ' / ' pour une liste définie de valeurs
 function slash(value) {
-    console.log("slash pour : ", value)
+    // console.log("slash pour : ", value)
     const slashList = ['WINDOWS_ACTIVE_DIRECTORY', 'INTRANET_OTHER_SOFT', 'PINGID_SSO', 'INSTALL_UNINSTALL', 'MALWARE_VIRUS', 'THIEF_ROGUE']
     slashList.forEach(slash => {
         if (slash === value) {
             value = value.replace('_', ' / ')
-            console.log('Valeur slashée : ' + value)
+            // console.log('Valeur slashée : ' + value)
         }
     })
     return value
@@ -225,7 +225,33 @@ async function loadOverlay() {
         console.log('option ajoutée :', option)
         templateDropdown.add(option)
     })
+
+    const mirror = document.querySelector('.select-mirror');
+    mirror.innerHTML = `<span style="color: rgb(0, 5, 14);padding-left: 3px;">-- Aucune --</span>`;
+
+    function updateMirror(text) {
+        console.log('updateMirror appelé avec :', text);
+        console.log('mirror trouvé :', mirror);
+
+        if (!text) {
+            mirror.innerHTML = `<span style="color: rgb(0, 5, 14);padding-left: 3px;">-- Aucune --</span>`;
+            mirror.classList.remove('scrolling');
+            return;
+        }
+
+        mirror.innerHTML = `<span style="padding-left: 3px;">${text}</span>`;
+
+        // Vérifie si le texte dépasse la largeur disponible
+        const span = mirror.querySelector('span');
+        if (span.scrollWidth > mirror.clientWidth) {
+            mirror.classList.add('scrolling');
+        } else {
+            mirror.classList.remove('scrolling');
+        }
+    }
+
     templateDropdown.addEventListener('change', () => {
+        updateMirror(templateDropdown.value);
         let option
         json.forEach((item) => {
             if (item["label"] === templateDropdown.value) {

@@ -14,3 +14,49 @@
 #reset_template:hover svg {
     fill: rgb(0, 49, 99);
 }
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Rend le texte du select transparent pour laisser place au mirror */
+.select-wrapper select {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Mais garde la couleur normale sur l'option placeholder */
+.select-wrapper select option {
+    color: initial;
+    -webkit-text-fill-color: initial;
+}
+
+.select-mirror {
+    position: absolute;
+    left: 8px;
+    right: 2.3rem;
+    overflow: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    color: #333;
+    font-size: inherit;
+    top: 0;
+    bottom: 0;
+    transform: none;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    15%  { transform: translateX(0); }
+    85%  { transform: translateX(-100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.select-mirror.scrolling span {
+    padding-left: 3px;
+    display: inline-block;
+    animation: marquee 5s linear infinite;
+}

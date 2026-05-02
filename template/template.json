@@ -1,6 +1,6 @@
 [
   {
-    "label": "Compte AD bloqué",
+    "label": "AD - Compte bloqué",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -13,11 +13,11 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Compte débloqué",
       "short_description": "Compte bloqué",
-      "description": "Téléphone :           \nCompte bloqué"
+      "description": "Téléphone : \nCompte AD bloqué"
     }
   },
   {
-    "label": "Mot de passe AD expiré",
+    "label": "AD - Mot de passe expiré",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -30,11 +30,11 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Mot de passe réinitialisé",
       "short_description": "Mot de passe expiré",
-      "description": "Téléphone :           \nMot de passe expiré"
+      "description": "Téléphone : \nMot de passe AD expiré"
     }
   },
   {
-    "label": "Connexion AD KO",
+    "label": "AD - Connexion NOK",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -47,11 +47,11 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Mot de passe réinitialisé --> OK",
       "short_description": "Connexion NOK",
-      "description": "Téléphone :           \nConnexion NOK"
+      "description": "Téléphone : \nConnexion à l'AD NOK"
     }
   },
   {
-    "label": "Compte Sineres bloqué",
+    "label": "Sineres - Compte bloqué",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -64,11 +64,11 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Compte débloqué",
       "short_description": "Compte bloqué",
-      "description": "Téléphone :           \nCompte bloqué"
+      "description": "Téléphone : \nCompte Sineres bloqué"
     }
   },
   {
-    "label": "Mot de passe Sineres expiré",
+    "label": "Sineres - Mot de passe expiré",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -81,11 +81,11 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Mot de passe réinitialisé",
       "short_description": "Mot de passe expiré",
-      "description": "Téléphone :           \nMot de passe expiré"
+      "description": "Téléphone : \nMot de passe Sineres expiré"
     }
   },
   {
-    "label": "Connexion compte Sineres KO",
+    "label": "Sineres - Connexion compte NOK",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -98,11 +98,28 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Mot de passe réinitialisé --> OK",
       "short_description": "Connexion NOK",
-      "description": "Téléphone :           \nConnexion NOK"
+      "description": "Téléphone : \nConnexion à Sineres NOK"
     }
   },
   {
-    "label": "Connexion SSO OneGPC NOK",
+    "label": "Sineres - Aiguillage d'imprimante",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "erp",
+      "u_item": "sineres",
+      "CI": "SINERES",
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ALL_L2_APP_SINE",
+      "close_code": "",
+      "close_notes": "",
+      "short_description": "Aiguillage d'imprimante(s)",
+      "description": "Téléphone : \nServeur : \nAdresse IP de(s) l'imprimante(s) : \nNuméro de l'imprimante(s) : \nNom de(s) l'utilisateur.ice(s) : \n\nPouvez-vous aiguiller la/les imprimante(s) pour le/la/les utilisateurs.ice(s) concerné.e(s) svp ?"
+    }
+  },
+  {
+    "label": "SSO OneGPC - Connexion NOK",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -115,7 +132,92 @@
       "close_code": "Solved (Permanently)",
       "close_notes": "Mot de passe réinitialisé",
       "short_description": "Connexion NOK",
-      "description": "Téléphone :           \nConnexion NOK"
+      "description": "Téléphone : \nConnexion en SSO OneGPC NOK"
+    }
+  },
+  {
+    "label": "Ping ID NOK - Envoi à GPC",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "system",
+      "u_item": "pingid_sso",
+      "CI": "Ping ID",
+      "service": "All",
+      "group": "52e1d9c0fb949e10fba8f5405eefdced",
+      "close_code": "",
+      "close_notes": "",
+      "short_description": "Ping ID NOK",
+      "description": "Téléphone : \n\nHi,\n\nCould you please reset the PingID session of the user ?\nThey changed their phone and the MFA does not work anymore.\n\nThanks,\n\nSDK AAG\n\nWorkday ID : "
+    }
+  },
+  {
+    "label": "VPN Versa - User ID inconnu",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "network",
+      "u_item": "vpn",
+      "CI": "42105ae2db2fc050feacb5ca68961945",
+      "service": "83901226db2fc050feacb5ca68961993",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Connexion avec l'adresse mail dans le champ \"User ID\" OK ",
+      "short_description": "Connexion au VPN Versa NOK",
+      "description": "Téléphone : \nConnexion à Versa NOK : l'User ID est inconnu"
+    }
+  },
+  {
+    "label": "VPN Versa - Redéployer via BigFix pour INF_RUN",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "infrastructure",
+      "subcategory": "network",
+      "u_item": "vpn",
+      "CI": "42105ae2db2fc050feacb5ca68961945",
+      "service": "83901226db2fc050feacb5ca68961993",
+      "group": "ALL_L2_INF_RUN",
+      "close_code": "",
+      "close_notes": "",
+      "short_description": "Connexion au VPN Versa NOK",
+      "description": "Téléphone : \nHostname : \nConnexion à Versa NOK. \nMessage d'erreur : \n\nPouvez-vous le redéployer avec BigFix svp ?"
+    }
+  },
+  {
+    "label": "Office 365 - Licence manquante",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "collaborative_office",
+      "u_item": "office_excel_word_powerpoint_etc",
+      "CI": "c6105ae2db2fc050feacb5ca68961936",
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Bonjour, \n\nSuite à la nouvelle politique de l'entreprise, le compte de l'utilisateur ne dispose plus de licence F3, de ce fait, les accès aux outils collaboratifs Office 365 ne sont plus accessibles. \n\nToutefois, vous pouvez effectuer une réclamation en créant une demande composée d’un justificatif précis de votre besoin (Merci de détailler le poste occupé et les tâches de l’utilisateur impacté sur Outlook ou autres applications Microsoft) \n\nUne analyse sera effectuée par le service en charge des attributions et exceptions.\n\nLien vers le formulaire de demande -> https://aagprod.service-now.com/sp?id=sc_cat_item&sys_id=31e8bd398748111001d362880cbb354d&sysparm_category=1211d1c48798591001d362880cbb3534\n\nMerci de votre compréhension.\nCordialement,\n\nService Desk",
+      "short_description": "Licence désactivée",
+      "description": "Téléphone : \nL'utilisateur.ice n'a pas accès aux applications Office 365. Sa licence est désactivée.\nLicence à demander : "
+    }
+  },
+  {
+    "label": "Configuration imprimante - Windows",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "hardware_fr",
+      "subcategory": "printer_scanner",
+      "u_item": "configuration_printer_scanner",
+      "CI": "1b02f47d3b19ba1042b7daa985e45a51",
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ALL_L1_SDK",
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Imprimante configurée OK",
+      "short_description": "Imprimante à configurer sur l'appareil",
+      "description": "Téléphone : \nHostname : \nAdresse IP de l'imprimante : \nModèle de l'imprimante : \nDrivers à installer ? Oui/Non"
     }
   }
 ]
