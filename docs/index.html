@@ -3,19 +3,19 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Extension script_snow - Politique de confidentialité</title>
+    <title>Extension SNow Glide - Politique de confidentialité</title>
 </head>
 <body>
-<h1>Politique de confidentialité de l’extension Chrome « script_snow »</h1>
+<h1>Politique de confidentialité de l’extension Chrome « SNow Glide »</h1>
 
 <h2>1. Présentation</h2>
 <p>
-    L’extension Chrome « script_snow » est un outil interne utilisé par une petite équipe de support informatique. Elle a pour seul objectif de faciliter et d’accélérer la création de tickets d’incident dans l’outil ServiceNow, en améliorant la clarté et l’homogénéité de la brève description des tickets.
+    L’extension Chrome « SNow Glide » est un outil interne utilisé par une petite équipe de support informatique. Elle a pour seul objectif de faciliter et d’accélérer la création de tickets d’incident dans l’outil ServiceNow, en améliorant la clarté et l’homogénéité de la brève description des tickets, et en ajoutant la possibilité de sélectionner un template sujet pour préremplir un ticket en fonction d'un sujet récurrent, afin d'accélérer la création de ticket en période de rush par exemple.
 </p>
 
 <h2>2. Données traitées</h2>
 <p>
-    L’extension accède uniquement aux éléments déjà présents dans la page ServiceNow ouverte par l’utilisateur. Concrètement, elle lit les valeurs sélectionnées dans certaines listes déroulantes et les champs de formulaire liés à la qualification de l’incident (catégories, sous-catégories, items, CIs) afin de les réutiliser pour construire automatiquement une brève description plus structurée.
+    L’extension accède aux éléments déjà présents dans la page ServiceNow ouverte par l’utilisateur (sur le DOM), ainsi qu'à un fichier JSON simple contenu dans les fichiers de l'extension. Concrètement, elle lit les valeurs sélectionnées dans certaines listes déroulantes et les champs de formulaire liés à la qualification de l’incident (catégories, sous-catégories, items, CIs) afin de les réutiliser pour construire automatiquement une brève description plus structurée. Elle utilise le JSON pour piocher des valeurs prédéfinies et les appliquer au formulaire Service Now, remplaçant les clics répétés du technicien.
 </p>
 <p>
     L’extension ne collecte pas intentionnellement d’autres informations que celles nécessaires à cette mise en forme de la brève description, et ne lit pas le contenu d’autres sites ou onglets.
@@ -23,7 +23,10 @@
 
 <h2>3. Finalité du traitement</h2>
 <p>
-    Les données sont traitées exclusivement pour assister le technicien dans la rédaction de la brève description du ticket ServiceNow, en préremplissant ou en reformulant ce champ à partir des sélections qu’il a lui-même effectuées dans le formulaire.
+    Les données sont traitées exclusivement pour assister le technicien dans la rédaction de la brève description du ticket ServiceNow, en reformulant ce champ à partir des sélections qu’il a lui-même effectuées dans le formulaire, ainsi que le préremplissage des champs du ticket en fonction d'une option choisie dans le nouvel input créé dans le DOM de la page.
+</p>
+<p>
+    Aucune écriture dans le fichier template.json ne sera effectuée par l'extension.
 </p>
 <p>
     Aucune autre finalité (analyse, suivi, profilage, publicité, statistiques, etc.) n’est poursuivie.
@@ -46,7 +49,7 @@
 
 <h2>7. Permissions du navigateur</h2>
 <p>
-    Les permissions éventuellement demandées par l’extension dans le navigateur ont pour seul but de lui permettre d’accéder au contenu de la page ServiceNow sur laquelle l’utilisateur intervient, afin de lire les champs nécessaires et de mettre à jour la brève description. L’extension n’utilise pas ces permissions pour accéder à d’autres sites ou à des contenus sans lien avec cette fonctionnalité.
+    Les permissions éventuellement demandées par l’extension dans le navigateur ont pour seul but de lui permettre d’accéder au contenu de la page ServiceNow sur laquelle l’utilisateur intervient, afin de lire les champs nécessaires et de mettre à jour la brève description et les autres champs auxquels le technicien a déjà accès. L’extension n’utilise pas ces permissions pour accéder à d’autres sites ou à des contenus sans lien avec cette fonctionnalité.
 </p>
 
 <h2>8. Contact</h2>
@@ -60,7 +63,7 @@
     La présente politique de confidentialité peut être mise à jour en cas d’évolution de l’extension ou des exigences réglementaires. Toute modification substantielle sera reflétée sur cette page, avec une nouvelle date de mise à jour.
 </p>
 <p>
-    Dernière mise à jour : 23 avril 2026.
+    Dernière mise à jour : 03 mai 2026.
 </p>
 
 </body>

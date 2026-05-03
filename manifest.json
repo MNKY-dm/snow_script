@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "snow_script",
+  "name": "SNow Glide",
   "version": "2.0.1",
   "description": "Fonctionnalités additionnelles sur le ticketing Service Now automatisant les tâches récurrentes du Service Desk. By Dylan MOULIN.",
   "content_scripts": [
