@@ -54,10 +54,10 @@ async function init() {
         let CI = clearValue(inputCIDisplay.value.toUpperCase());
         let shortDescription = clearValue(inputShortDescription.value.toUpperCase());
 
-        inputShortDescription.addEventListener('input', () => {
-            shortDescription = inputShortDescription.value;
-            setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        })
+        // inputShortDescription.addEventListener('input', () => {
+        //     shortDescription = inputShortDescription.value;
+        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        // })
 
         const observerShortDescription = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -74,12 +74,12 @@ async function init() {
         //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
         // })
 
-        selectCategory.addEventListener('change', () => {
-            category = selectCategory.value;
-            category = clearValue(category.toUpperCase());
-            // console.log("category : " + category)
-            setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        })
+        // selectCategory.addEventListener('change', () => {
+        //     category = selectCategory.value;
+        //     category = clearValue(category.toUpperCase());
+        //     // console.log("category : " + category)
+        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        // })
 
         const observerCategory = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -100,11 +100,11 @@ async function init() {
 
         observerSubCategory.observe(selectSubCategory, { attributes: true, childList: true, subtree: true, characterData: true });
 
-        selectSubCategory.addEventListener('change', () => {
-            subCategory = selectSubCategory.value;
-            subCategory = clearValue(subCategory.toUpperCase());
-            setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        })
+        // selectSubCategory.addEventListener('change', () => {
+        //     subCategory = selectSubCategory.value;
+        //     subCategory = clearValue(subCategory.toUpperCase());
+        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        // })
 
         const observerItem = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -115,28 +115,28 @@ async function init() {
 
         observerItem.observe(selectItem, { attributes: true, childList: true, subtree: true, characterData: true });
 
-        selectItem.addEventListener('change', () => {
-            item = selectItem.value;
-            item = clearValue(item.toUpperCase());
-            setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        })
+        // selectItem.addEventListener('change', () => {
+        //     item = selectItem.value;
+        //     item = clearValue(item.toUpperCase());
+        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        // })
 
-        inputCIDisplay.addEventListener('input', () => {
-            setTimeout(()=>{
-                const display = inputCIDisplay?.value || '';
-                CI = clearValue(display.toUpperCase())
-                setShortDescription(inputShortDescription, category, subCategory, item, CI)
-            }, 2500)
-        })
-
-        inputCIDisplay.addEventListener('click', () => {
-            setTimeout(()=>{
-                const display = inputCIDisplay?.value?.trim() || '';
-
-                CI = clearValue(display.toUpperCase())
-                setShortDescription(inputShortDescription, category, subCategory, item, CI)
-            }, 2500)
-        })
+        // inputCIDisplay.addEventListener('input', () => {
+        //     setTimeout(()=>{
+        //         const display = inputCIDisplay?.value || '';
+        //         CI = clearValue(display.toUpperCase())
+        //         setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        //     }, 2500)
+        // })
+        //
+        // inputCIDisplay.addEventListener('click', () => {
+        //     setTimeout(()=>{
+        //         const display = inputCIDisplay?.value?.trim() || '';
+        //
+        //         CI = clearValue(display.toUpperCase())
+        //         setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        //     }, 2500)
+        // })
 
         const observerCI = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -164,6 +164,10 @@ function setShortDescription(inputShortDescription, category, subCategory, item,
 function clearValue(value) {
     switch (value) {
         case 'HARDWARE_FR':  value = 'HARDWARE'
+            break
+        case 'CONFIGURATION_PRINTER_SCANNER':  value = 'CONFIGURATION PRINTER / SCANNER'
+            break
+        case 'TOKEN_GENERATE_SSPR':  value = 'TOKEN GENERATE / SSPR'
             break
         case 'CYBER':  value = 'CYBERSECURITY'
             break
