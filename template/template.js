@@ -4,6 +4,7 @@ window.addEventListener('message', (event) => {
     if (typeof g_form === 'undefined') return;
     if (event.data?.type === 'RESET_TEMPLATE') {
         if (observerCaller) observerCaller.disconnect();
+        if (observerCI) observerCI.disconnect();
         const mandatoryFields = ['caller_id', 'location', 'category', 'subcategory', 'u_item', 'cmdb_ci',
             'contact_type', 'urgency'];
 
@@ -21,9 +22,11 @@ window.addEventListener('message', (event) => {
             g_form.clearValue('category');
             g_form.clearValue('cmdb_ci')
             g_form.clearValue('business_service')
+            g_form.clearValue('assignment_group')
+            g_form.setValue('state', 1)
 
             g_form.clearValue('short_description')
-            g_form.clearValue('description')
+            g_form.setValue('description', "Téléphone :\nNombre d'utilisateurs impactés :")
             g_form.clearValue('close_code')
             g_form.clearValue('close_notes')
 
@@ -46,16 +49,6 @@ window.addEventListener('message', (event) => {
     g_form.setValue('u_item', option.fields.u_item)
     g_form.setValue('cmdb_ci', option.fields.CI)
 
-    // Cette fonction permet de détecter tout changement sur l'appelant, et pour remettre le CI si jamais il est supprimé car l'appelant est saisi après le choix du template
-    // g_form.getControl('caller_id').addEventListener('change', () => {
-    //     console.log("caller_id changé");
-    //     setTimeout(() => {
-    //         if (g_form.getValue('cmdb_ci') === '') {
-    //             g_form.setValue('cmdb_ci', option.fields.CI)
-    //         }
-    //     }, 500)
-    // })
-
     if (observerCaller) observerCaller.disconnect();
     observerCaller = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
@@ -70,7 +63,6 @@ window.addEventListener('message', (event) => {
 
 
 
-// Dans APPLY_TEMPLATE, après avoir créé observerCaller :
     if (observerCI) observerCI.disconnect();
     observerCI = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
@@ -88,6 +80,7 @@ window.addEventListener('message', (event) => {
         g_form.setValue('business_service', option.fields.service)
     }, 1000) // timeout nécessaire ici car le service est supprimé s'il est entré trop rapidement
     g_form.setValue('assignment_group', option.fields.group)
+    g_form.setValue('state', option.fields.state)
     g_form.setValue('urgency', option.fields.urgency)
     g_form.setValue('contact_type', option.fields.contact_type)
 
