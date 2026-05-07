@@ -1,5 +1,6 @@
 let observerCaller = null;
 let observerCI = null;
+let observerTemplate = null;
 window.addEventListener('message', (event) => {
     if (typeof g_form === 'undefined') return;
     if (event.data?.type === 'RESET_TEMPLATE') {
@@ -85,9 +86,24 @@ window.addEventListener('message', (event) => {
     g_form.setValue('contact_type', option.fields.contact_type)
 
     g_form.setValue('short_description', option.fields.short_description)
+
+    if (observerTemplate) observerTemplate.disconnect();
+    observerTemplate = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            console.log("template snow natif changé");
+            setTimeout(() => {
+                g_form.setValue('description', option.fields.description)
+            }, 1000)
+        })
+    })
+
+    observerTemplate.observe(g_form.getControl('u_template'), { attributes: true, childList: true, subtree: true, characterData: true })
+
     g_form.setValue('description', option.fields.description)
+
     g_form.setValue('close_code', option.fields.close_code)
     g_form.setValue('close_notes', option.fields.close_notes)
 });
 
 // VPN, PING ID, IMPRIMANTES SINERES & WINDOWS, LICENCES OFFICE, CODE PIN BITLOCKER,
+// CODE PUK carte SIM
