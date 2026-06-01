@@ -54,11 +54,6 @@ async function init() {
         let CI = clearValue(inputCIDisplay.value.toUpperCase());
         let shortDescription = clearValue(inputShortDescription.value.toUpperCase());
 
-        // inputShortDescription.addEventListener('input', () => {
-        //     shortDescription = inputShortDescription.value;
-        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        // })
-
         const observerShortDescription = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 shortDescription = clearValue(inputShortDescription.value.toUpperCase());
@@ -67,19 +62,6 @@ async function init() {
         })
 
         observerShortDescription.observe(inputShortDescription, { attributes: true, childList: true, subtree: true, characterData: true });
-
-        // inputShortDescription.addEventListener('change', () => {
-        //     shortDescription = inputShortDescription.value;
-        //     // console.log("shortdescription : " + shortDescription)
-        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        // })
-
-        // selectCategory.addEventListener('change', () => {
-        //     category = selectCategory.value;
-        //     category = clearValue(category.toUpperCase());
-        //     // console.log("category : " + category)
-        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        // })
 
         const observerCategory = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -100,12 +82,6 @@ async function init() {
 
         observerSubCategory.observe(selectSubCategory, { attributes: true, childList: true, subtree: true, characterData: true });
 
-        // selectSubCategory.addEventListener('change', () => {
-        //     subCategory = selectSubCategory.value;
-        //     subCategory = clearValue(subCategory.toUpperCase());
-        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        // })
-
         const observerItem = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 item = clearValue(selectItem.value.toUpperCase());
@@ -114,29 +90,6 @@ async function init() {
         })
 
         observerItem.observe(selectItem, { attributes: true, childList: true, subtree: true, characterData: true });
-
-        // selectItem.addEventListener('change', () => {
-        //     item = selectItem.value;
-        //     item = clearValue(item.toUpperCase());
-        //     setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        // })
-
-        // inputCIDisplay.addEventListener('input', () => {
-        //     setTimeout(()=>{
-        //         const display = inputCIDisplay?.value || '';
-        //         CI = clearValue(display.toUpperCase())
-        //         setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        //     }, 2500)
-        // })
-        //
-        // inputCIDisplay.addEventListener('click', () => {
-        //     setTimeout(()=>{
-        //         const display = inputCIDisplay?.value?.trim() || '';
-        //
-        //         CI = clearValue(display.toUpperCase())
-        //         setShortDescription(inputShortDescription, category, subCategory, item, CI)
-        //     }, 2500)
-        // })
 
         const observerCI = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {

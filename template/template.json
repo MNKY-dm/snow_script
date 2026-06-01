@@ -126,21 +126,39 @@
     }
   },
   {
-    "label": "SSO OneGPC - Connexion NOK",
+    "label": "SSO Workday - Connexion NOK",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
-      "category": "infrastructure",
-      "subcategory": "system",
-      "u_item": "pingid_sso",
-      "CI": "0632f5182b7f1e104c2bff6fce91bfc8",
+      "category": "software",
+      "subcategory": "business_applications",
+      "u_item": "workday",
+      "CI": "558bbb26fbf95a90fba8f5405eefdc40",
       "service": "0e7a06157f10310016181ccebefa91ce",
       "group": "ed2e1faadb534810feacb5ca68961995",
       "state": 6,
       "close_code": "Solved (Permanently)",
       "close_notes": "Mot de passe réinitialisé",
       "short_description": "Connexion NOK",
-      "description": "Téléphone : \nConnexion en SSO OneGPC NOK"
+      "description": "Téléphone : \nConnexion en SSO Workday NOK"
+    }
+  },
+  {
+    "label": "SSO Workday - Envoi de la procédure",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "business_applications",
+      "u_item": "workday",
+      "CI": "558bbb26fbf95a90fba8f5405eefdc40",
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ed2e1faadb534810feacb5ca68961995",
+      "state": 6,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Token généré - Procédure envoyée par mail",
+      "short_description": "Connexion NOK",
+      "description": "Téléphone : \nConnexion en SSO Workday NOK"
     }
   },
   {
