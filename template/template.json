@@ -180,7 +180,7 @@
     }
   },
   {
-    "label": "VPN Versa - User ID inconnu",
+    "label": "VPN Versa - Process de connexion inconnu",
     "fields": {
       "urgency": 4,
       "contact_type": "phone",
@@ -192,9 +192,9 @@
       "group": "ed2e1faadb534810feacb5ca68961995",
       "state": 6,
       "close_code": "Solved (Permanently)",
-      "close_notes": "Connexion avec l'adresse mail dans le champ \"User ID\" OK ",
+      "close_notes": "Connexion avec les instructions OK ",
       "short_description": "Connexion au VPN Versa NOK",
-      "description": "Téléphone : \nConnexion à Versa NOK : l'User ID est inconnu"
+      "description": "Téléphone : \nConnexion au VPN Versa NOK"
     }
   },
   {

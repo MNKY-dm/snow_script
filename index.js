@@ -54,14 +54,14 @@ async function init() {
         let CI = clearValue(inputCIDisplay.value.toUpperCase());
         let shortDescription = clearValue(inputShortDescription.value.toUpperCase());
 
-        const observerShortDescription = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
-                shortDescription = clearValue(inputShortDescription.value.toUpperCase());
-                setShortDescription(inputShortDescription, category, subCategory, item, CI)
-            })
-        })
-
-        observerShortDescription.observe(inputShortDescription, { attributes: true, childList: true, subtree: true, characterData: true });
+        // const observerShortDescription = new MutationObserver(function (mutations) {
+        //     mutations.forEach(function (mutation) {
+        //         shortDescription = clearValue(inputShortDescription.value.toUpperCase());
+        //         setShortDescription(inputShortDescription, category, subCategory, item, CI)
+        //     })
+        // })
+        //
+        // observerShortDescription.observe(inputShortDescription, { attributes: true, childList: true, subtree: true, characterData: true });
 
         const observerCategory = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
@@ -121,6 +121,8 @@ function clearValue(value) {
         case 'CONFIGURATION_PRINTER_SCANNER':  value = 'CONFIGURATION PRINTER / SCANNER'
             break
         case 'TOKEN_GENERATE_SSPR':  value = 'TOKEN GENERATE / SSPR'
+            break
+        case 'EXTERNAL_VENDOR_TCS':  value = 'EXTERNAL VENDOR TCS'
             break
         case 'CYBER':  value = 'CYBERSECURITY'
             break
