@@ -90,6 +90,24 @@
     }
   },
   {
+    "label": "Sineres - Redirection vers le robot",
+    "fields": {
+      "urgency": 4,
+      "contact_type": "phone",
+      "category": "software",
+      "subcategory": "erp",
+      "u_item": "sineres",
+      "CI": "c1205ae2db2fc050feacb5ca689619da",
+      "service": "0e7a06157f10310016181ccebefa91ce",
+      "group": "ed2e1faadb534810feacb5ca68961995",
+      "state": 6,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Utilisateur.ice redirigé.e vers le robot Sineres. Le mail avec les étapes à suivre lui a été envoyé.",
+      "short_description": "Mot de passe expiré",
+      "description": "Téléphone : \nMot de passe Sineres expiré"
+    }
+  },
+  {
     "label": "Sineres - Connexion compte NOK",
     "fields": {
       "urgency": 4,
@@ -207,8 +225,8 @@
       "u_item": "vpn",
       "CI": "42105ae2db2fc050feacb5ca68961945",
       "service": "0e7a06157f10310016181ccebefa91ce",
-      "group": "ALL_L2_INF_RUN",
-      "state": 6,
+      "group": "2fa242458731a9103b7140480cbb3579",
+      "state": 1,
       "close_code": "",
       "close_notes": "",
       "short_description": "Connexion au VPN Versa NOK",
